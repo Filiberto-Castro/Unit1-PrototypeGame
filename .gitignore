@@ -119,3 +119,9 @@ crashlytics-build.properties
 *.mat
 *.ttf
 *.pdf
+
+## Ignorando el proyecto de desafío
+
+/Assets/Challange 1
+*.mov
+*.unity
