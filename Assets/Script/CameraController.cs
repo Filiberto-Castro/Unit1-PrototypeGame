@@ -5,17 +5,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject player;
-    public Vector3 offset;
-    // Start is called before the first frame update
+    private Vector3 offset;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        // camara persiguiendo jugador
+        // hace que la camara persiga al jugador
         transform.position = player.transform.position + offset;
     }
 }
