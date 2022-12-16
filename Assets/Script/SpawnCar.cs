@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class SpawnCar : MonoBehaviour
 {
+    // lista para las posiciones de spawn
     public List<Transform> spawnPoint = new List<Transform>();
+    // Array de gameobject para los vehiculos
     public GameObject[] car;
     
     public float spawnTime;
@@ -23,6 +25,8 @@ public class SpawnCar : MonoBehaviour
     void Update()
     {
         spawnTime += Time.deltaTime;
+
+        //Generando vehiculos
         if(canSpawn)
         {
             randomTime = Random.Range(minTime, maxTime);
@@ -34,6 +38,7 @@ public class SpawnCar : MonoBehaviour
             }
         } else if(spawnTime >= randomTime)
         {
+            // Generar vehiculo de manera aleatoria y en posision aleatoria
             GameObject newCar = Instantiate(car[Random.Range(0, car.Length)], spawnPoint[Random.Range(0, spawnPoint.Count)].transform.position, transform.rotation);
             spawnTime = 0;
             canSpawn = true;
