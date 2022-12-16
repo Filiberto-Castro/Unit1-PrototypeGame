@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI textVelocity;
     public TextMeshProUGUI textTime;
+    public TextMeshProUGUI textScoreTime;
     public GameObject textWinGame;
     
     public PlayerController playerController;
@@ -16,7 +17,7 @@ public class UIManager : MonoBehaviour
     public float velAument;
     public float scoreTime;
 
-    public bool finishGame;
+    public bool finishGame = false;
 
     void Start()
     {
@@ -38,10 +39,11 @@ public class UIManager : MonoBehaviour
             textVelocity.SetText("N");
         }
         
-        finishGame = gameController.win;
-        if(finishGame)
-        {
+        if(gameController.win && !finishGame)
+        {   
+            textScoreTime.SetText("Time Score:" + scoreTime.ToString("0.00"));
             textWinGame.SetActive(true);
+            finishGame = true;
         }
         
     }

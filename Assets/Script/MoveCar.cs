@@ -10,4 +10,12 @@ public class MoveCar : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speedMove * Time.deltaTime);
     }
+
+    // Detectar collision a zonas de collision para destruir el gameobjet
+    private void OnTriggerEnter(Collider other) {
+        if(other.gameObject.CompareTag("collisionZone"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
