@@ -7,14 +7,18 @@ public class GameController : MonoBehaviour
 {
     private Vector3 mainPosition;
 
+    private bool winGame;
+    public bool win = false;
+
     void Start()
     {
         mainPosition = transform.position;
+        winGame = false;
     }
 
     void Update()
     {
-        
+        win = winGame;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -23,11 +27,21 @@ public class GameController : MonoBehaviour
             StartCoroutine(WaitSecond());
             
         }
+
+        if(other.gameObject.CompareTag("FinishGame"))
+        {
+            GameWin();
+        }
     }
 
-    public void GameOver()
+    private void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void GameWin()
+    {
+        winGame = true;
     }
 
     IEnumerator WaitSecond()

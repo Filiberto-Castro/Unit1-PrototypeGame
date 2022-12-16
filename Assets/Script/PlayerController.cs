@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
 
+    public float speedUI;
+
     void Start()
     {
         
@@ -24,5 +26,8 @@ public class PlayerController : MonoBehaviour
         //Move the vehicle forward
         transform.Translate(Vector3.forward * forwardInput * speed * Time.deltaTime);
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+
+        //Esta variable speedUI sirve en el UIManager.cs
+        speedUI = forwardInput;
     }
 }
