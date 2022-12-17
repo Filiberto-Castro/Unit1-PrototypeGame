@@ -106,6 +106,7 @@ crashlytics-build.properties
 /Assets/Materials
 /Assets/model3D
 /Assets/Scenes
+/Assets/Prefab
 /Packages
 *.meta
 *.asset
