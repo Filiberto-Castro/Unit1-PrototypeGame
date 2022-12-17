@@ -9,11 +9,17 @@ public class GameController : MonoBehaviour
 
     private bool winGame;
     public bool win = false;
+    public bool isCollision;
+
+    private string nameObject = "";
+    public int pointCollision;
+    public ParticleSystem blowEffect;
 
     void Start()
     {
         mainPosition = transform.position;
         winGame = false;
+        blowEffect.Stop();
     }
 
     void Update()
@@ -24,14 +30,34 @@ public class GameController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Vehicle"))
         {
+            blowEffect.Play();
             StartCoroutine(WaitSecondGameOver());
             
         }
-
         if(other.gameObject.CompareTag("FinishGame"))
         {
             winGame = true;
             StartCoroutine(WaitSecondGameWin());
+        }
+    }
+
+    private void OnCollisionEnter(Collision other) {
+
+        if(other.gameObject.CompareTag("Obstacle") && other.gameObject.name != nameObject)
+        {
+            isCollision = true;
+            nameObject = other.gameObject.name;
+            pointCollision++;
+        }else if(other.gameObject.name == nameObject)
+        {
+            isCollision = false;
+        }
+    }
+    
+    private void OnCollisionExit(Collision other) {
+        if(other.gameObject.CompareTag("Obstacle"))
+        {
+            isCollision = false;
         }
     }
 

@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     public float velAument;
     public float scoreTime;
 
+    public TextMeshProUGUI textPointCollision;
+    public int mainPointGame = 100;
+
     public bool finishGame = false;
 
     void Start()
@@ -46,7 +49,7 @@ public class UIManager : MonoBehaviour
             finishGame = true;
         }
         
+        textPointCollision.SetText( "Collision: " + gameController.pointCollision);
     }
-
     
 }
