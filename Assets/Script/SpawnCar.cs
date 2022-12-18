@@ -9,13 +9,14 @@ public class SpawnCar : MonoBehaviour
     // Array de gameobject para los vehiculos
     public GameObject[] car;
     
-    public float spawnTime;
-    public float maxTime;
-    public float minTime;
-    public float randomTime;
+    // variables de generacion de vehiculos
+    private float spawnTime;
+    private float maxTime;
+    private float minTime;
+    private float randomTime;
 
-    public bool canSpawn;
-    public bool firtsSpawnCar;
+    private bool canSpawn;
+    private bool firtsSpawnCar;
 
     private void Start() {
         canSpawn = true;
@@ -31,7 +32,7 @@ public class SpawnCar : MonoBehaviour
         {
             randomTime = Random.Range(minTime, maxTime);
             canSpawn = false;
-            if(firtsSpawnCar)
+            if(firtsSpawnCar) // aplicar esto para el primer vehiculo generado
             {
                 randomTime = 0;
                 firtsSpawnCar = false;

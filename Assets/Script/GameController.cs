@@ -9,8 +9,9 @@ public class GameController : MonoBehaviour
 
     private bool winGame;
     public bool win = false;
-    public bool isCollision;
 
+    // variables para collisiones
+    private bool isCollision;
     private string nameObject = "";
     public int pointCollision;
     public ParticleSystem blowEffect;
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
         win = winGame;
     }
 
+    // sistema de victoria y derrota
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Vehicle"))
         {
@@ -41,6 +43,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // detectando si se colisiona con obstaculos
     private void OnCollisionEnter(Collision other) {
 
         if(other.gameObject.CompareTag("Obstacle") && other.gameObject.name != nameObject)
@@ -61,11 +64,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // funcion para derrota
     private void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // funcion para victoria
     private void GameWin()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -73,13 +78,13 @@ public class GameController : MonoBehaviour
 
     IEnumerator WaitSecondGameOver()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         GameOver();
     }
 
     IEnumerator WaitSecondGameWin()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         GameWin();
     }
 }
