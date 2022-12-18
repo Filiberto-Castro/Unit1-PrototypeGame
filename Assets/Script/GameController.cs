@@ -7,11 +7,11 @@ public class GameController : MonoBehaviour
 {
     private Vector3 mainPosition;
 
-    private bool winGame;
+    private bool winGame = false;
     public bool win = false;
 
     // variables para collisiones
-    private bool isCollision;
+    private bool isCollision = false;
     private string nameObject = "";
     public int pointCollision;
     public ParticleSystem blowEffect;

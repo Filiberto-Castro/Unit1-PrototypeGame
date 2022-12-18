@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveCar : MonoBehaviour
 {
-    public float speedMove;
+    private float speedMove = 9.0f;
 
     void Update()
     {

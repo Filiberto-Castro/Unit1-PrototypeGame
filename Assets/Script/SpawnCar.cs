@@ -11,8 +11,8 @@ public class SpawnCar : MonoBehaviour
     
     // variables de generacion de vehiculos
     private float spawnTime;
-    private float maxTime;
-    private float minTime;
+    private float maxTime = 3.0f;
+    private float minTime = 1.5f;
     private float randomTime;
 
     private bool canSpawn;
