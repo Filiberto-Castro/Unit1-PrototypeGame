@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textVelocity;
     public TextMeshProUGUI textTime;
     public TextMeshProUGUI textScoreTime;
+    public TextMeshProUGUI scoreCollision;
     public GameObject textWinGame;
     
     public PlayerController playerController;
@@ -42,14 +43,29 @@ public class UIManager : MonoBehaviour
             textVelocity.SetText("N");
         }
         
+        // UI de victoria
         if(gameController.win && !finishGame)
         {   
             textScoreTime.SetText("Time Score:" + scoreTime.ToString("0.00"));
             textWinGame.SetActive(true);
+            if(gameController.pointCollision < 1 && scoreTime <= 20)
+            {
+                setDateCollision("Veteran");
+            } else if(gameController.pointCollision >= 1 && gameController.pointCollision <= 15 && scoreTime <= 35)
+            {
+                setDateCollision("Expert");
+            } else{
+                setDateCollision("Rookie");
+            }
             finishGame = true;
         }
         
         textPointCollision.SetText( "Collision: " + gameController.pointCollision);
+    }
+
+    private void setDateCollision(string text)
+    {
+        scoreCollision.SetText("You Level -> " + text);
     }
     
 }
